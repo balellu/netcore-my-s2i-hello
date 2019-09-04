@@ -1,9 +1,10 @@
 # Hello-World
-A 'Hello World' sample of REST API, created using ASP .NET Core Web API
+A 'Hello World' sample of REST API, created using ASP .NET Core Web API. This app is modified so that it can use OpenShift's S2I build.
+
 
 ## How to run this sample
 
-* Ensure that you have setup .NET Core. See the instructions in here if you have not done it before: https://www.microsoft.com/net/core#linuxubuntu
-* Pull this repo into your machine, go into the cloned repo's directory then run `dotnet build -c Release` command to start building the sample.
-* Once building the sample is done, run `dotnet run ./bin/Release/netcoreapp1.1/API.dll` command to start running the REST server.
-* Browse to http://localhost:5000/api/hello to invoke the ''Hello Spark' GET API.
+* Note that there is a folder .s2i/environment added to the root of the project. It will be used by OpenShift S2I builds to build this project
+* In OpenShift Images catalog choose .Net Core Image and then in the Git Repo section point to this code repository location
+* OpneShift S2I will build the `/bin/Release/netcoreapp1.1/API.dll` and then required .Net Core container image and it will start the POD
+* One POD stats go to http://YourOpenShiftGenerateRouteName/api/hello to invoke the GET method on this API, then you should see `Hello ASP .NET Core - Web API` on the browser. Alternatively `curl -v http://YourOpenShiftGenerateRouteName/api/hello` can also be used from the command line
