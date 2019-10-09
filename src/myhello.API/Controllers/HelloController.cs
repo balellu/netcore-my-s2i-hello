@@ -8,7 +8,7 @@
 
             [HttpGet] // http://domainpath/api/Hello Verb: GET
             public IActionResult GetMessage(){
-                return new ObjectResult("Hello Avis World by ASP .NET Core - Web API");
+                return new ObjectResult("Hello World by ASP .NET Core - Web API");
             }
         }
     }
